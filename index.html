@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Lagoon Resort & Spa — Riverside Luxury, Kenya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --green-deep:   #2a4a35;
+      --green-mid:    #3d6b4f;
+      --green-light:  #6a9e7a;
+      --sand:         #d9c9a3;
+      --sand-light:   #f2ead8;
+      --gold:         #b8973a;
+      --gold-light:   #e0c876;
+      --charcoal:     #1c1c1c;
+      --white:        #ffffff;
+      --off-white:    #faf8f3;
+      --text-muted:   #6b6b6b;
+      --radius:       4px;
+      --transition:   0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--off-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== UTILITY ===== */
+    .section-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--green-deep);
+    }
+    .section-title.light { color: var(--white); }
+    .divider {
+      width: 56px; height: 2px;
+      background: var(--gold);
+      margin: 1.1rem 0 1.4rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold-light); color: var(--charcoal); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--white);
+      color: var(--white);
+    }
+    .btn-outline:hover { background: var(--white); color: var(--green-deep); }
+    .btn-dark {
+      background: var(--green-deep);
+      color: var(--white);
+    }
+    .btn-dark:hover { background: var(--green-mid); }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,151,58,0.18);
+      transition: var(--transition);
+    }
+    #navbar.scrolled { box-shadow: 0 4px 32px rgba(42,74,53,0.10); }
+    .nav-logo img {
+      height: 52px; width: auto;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex; gap: 2.2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { display: flex; gap: 1rem; align-items: center; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--green-deep); transition: var(--transition); }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url("logoon drone river shot pic 12 'header '.jpg");
+      background-size: cover; background-position: center 40%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(28,28,28,0.55) 0%, rgba(42,74,53,0.45) 60%, rgba(28,28,28,0.6) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 5%;
+      max-width: 820px;
+      animation: fadeUp 1.1s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+      max-width: 580px; margin: 0 auto 2.4rem;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content: ''; display: block;
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,0.4);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    /* ===== AMENITIES ===== */
+    #amenities {
+      padding: 7rem 5%;
+      background: var(--white);
+    }
+    .amenities-inner { max-width: 1200px; margin: 0 auto; }
+    .amenities-header { text-align: center; margin-bottom: 3.5rem; }
+    .amenities-header .divider { margin: 1rem auto 1.4rem; }
+    .amenities-header p {
+      color: var(--text-muted);
+      max-width: 540px; margin: 0 auto;
+      line-height: 1.7;
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0;
+    }
+    .amenity-card {
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: var(--transition);
+      cursor: default;
+    }
+    .amenity-card:hover {
+      background: var(--sand-light);
+      border-color: var(--sand);
+    }
+    .amenity-icon {
+      width: 48px; height: 48px;
+      background: var(--sand-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem;
+      font-size: 1.4rem;
+      transition: var(--transition);
+    }
+    .amenity-card:hover .amenity-icon { background: var(--gold); }
+    .amenity-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem; font-weight: 500;
+      color: var(--green-deep);
+      margin-bottom: 0.4rem;
+    }
+    .amenity-desc {
+      font-size: 0.83rem; color: var(--text-muted); line-height: 1.6;
+    }
+    .amenities-photo {
+      margin-top: 4rem;
+      height: 340px; border-radius: var(--radius); overflow: hidden;
+      position: relative;
+    }
+    .amenities-photo img { border-radius: var(--radius); }
+
+    /* ===== DINING ===== */
+    #dining {
+      padding: 7rem 5%;
+      background: var(--sand-light);
+    }
+    .dining-inner { max-width: 1200px; margin: 0 auto; }
+    .dining-header { text-align: center; margin-bottom: 3.5rem; }
+    .dining-header .divider { margin: 1rem auto 1.4rem; }
+    .dining-header p {
+      color: var(--text-muted);
+      max-width: 560px; margin: 0 auto;
+      line-height: 1.75; font-size: 1rem;
+      font-style: italic;
+    }
+    .dining-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .dining-card {
+      background: var(--white);
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+      transition: var(--transition);
+    }
+    .dining-card:hover { transform: translateY(-5px); box-shadow: 0 14px 50px rgba(0,0,0,0.12); }
+    .dining-img {
+      height: 420px;
+      overflow: hidden;
+      position: relative;
+    }
+    .dining-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .dining-card:hover .dining-img img { transform: scale(1.04); }
+    .dining-body { padding: 1.8rem 2rem; }
+    .dining-tag {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.7rem;
+    }
+    .dining-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 500;
+      color: var(--green-deep);
+      margin-bottom: 0.7rem; line-height: 1.2;
+    }
+    .dining-desc {
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.7;
+    }
+    @media (max-width: 900px) {
+      .dining-grid { grid-template-columns: 1fr; }
+      .dining-img { height: 300px; }
+    }
+
+    /* ===== ROOMS ===== */
+    #rooms {
+      padding: 7rem 5%;
+      background: var(--off-white);
+    }
+    .rooms-inner { max-width: 1200px; margin: 0 auto; }
+    .rooms-header { margin-bottom: 3.5rem; }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .room-card {
+      background: var(--white);
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+      transition: var(--transition);
+    }
+    .room-card:hover { transform: translateY(-6px); box-shadow: 0 12px 48px rgba(0,0,0,0.13); }
+    .room-img { height: 260px; overflow: hidden; position: relative; }
+    .room-img img { transition: transform 0.6s ease; }
+    .room-card:hover .room-img img { transform: scale(1.05); }
+    .room-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--gold); color: var(--white);
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.3rem 0.8rem;
+    }
+    .room-body { padding: 1.8rem; }
+    .room-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 500;
+      color: var(--green-deep); margin-bottom: 0.6rem;
+    }
+    .room-meta {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .room-tag {
+      font-size: 0.74rem; font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      background: var(--sand-light); color: var(--green-deep);
+      border-radius: 2px;
+    }
+    .room-features {
+      list-style: none; margin-bottom: 1.5rem;
+    }
+    .room-features li {
+      font-size: 0.85rem; color: var(--text-muted);
+      padding: 0.35rem 0;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .room-features li::before {
+      content: ''; display: block;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ===== EVENTS ===== */
+    #events {
+      padding: 7rem 5%;
+      background: var(--green-deep);
+    }
+    .events-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .events-text .section-title { color: var(--white); }
+    .events-text .section-label { color: var(--gold-light); }
+    .events-text .divider { background: var(--gold-light); }
+    .events-text p {
+      color: rgba(255,255,255,0.82); line-height: 1.75;
+      font-size: 0.96rem; margin-bottom: 2rem;
+    }
+    .events-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+      align-self: stretch;
+    }
+    .events-photos img {
+      border-radius: var(--radius);
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+    .events-highlights {
+      list-style: none; margin-top: 1.5rem;
+    }
+    .events-highlights li {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.88rem; padding: 0.5rem 0;
+      display: flex; align-items: center; gap: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .events-highlights li span.dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* ===== GALLERY ===== */
+    #gallery {
+      padding: 7rem 5%;
+      background: var(--white);
+    }
+    .gallery-inner { max-width: 1200px; margin: 0 auto; }
+    .gallery-header { text-align: center; margin-bottom: 3rem; }
+    .gallery-header .divider { margin: 1rem auto 1.4rem; }
+    .masonry {
+      columns: 3; column-gap: 1rem;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .masonry-item img { transition: transform 0.5s ease; display: block; }
+    .masonry-item:hover img { transform: scale(1.04); }
+    .masonry-item::after {
+      content: '⊕';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(42,74,53,0.45);
+      color: var(--white); font-size: 2rem;
+      opacity: 0; transition: opacity 0.35s;
+    }
+    .masonry-item:hover::after { opacity: 1; }
+
+    /* Lightbox */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: var(--radius); }
+    #lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      color: var(--white); font-size: 2rem; cursor: pointer;
+      background: none; border: none; line-height: 1;
+    }
+
+    /* ===== BOOKING ===== */
+    #booking {
+      padding: 7rem 5%;
+      background: var(--sand-light);
+    }
+    .booking-inner { max-width: 860px; margin: 0 auto; }
+    .booking-header { text-align: center; margin-bottom: 2.5rem; }
+    .booking-header .divider { margin: 1rem auto 1.4rem; }
+    .booking-tabs {
+      display: flex; gap: 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid rgba(42,74,53,0.15);
+    }
+    .tab-btn {
+      flex: 1; padding: 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: var(--transition);
+    }
+    .tab-btn.active { color: var(--green-deep); border-bottom-color: var(--gold); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .booking-form {
+      background: var(--white);
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green-deep);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,0,0,0.14);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      background: var(--off-white);
+      outline: none;
+      transition: border-color var(--transition);
+      border-radius: var(--radius);
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--green-mid); background: var(--white); }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-submit { text-align: center; margin-top: 1.8rem; }
+    .btn-whatsapp {
+      background: #25d366; color: var(--white);
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.95rem 2.4rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .btn-whatsapp:hover { background: #1ea855; }
+    .btn-whatsapp svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ===== LOCATION / CONTACT ===== */
+    #location {
+      padding: 7rem 5%;
+      background: var(--off-white);
+    }
+    .location-inner { max-width: 1200px; margin: 0 auto; }
+    .location-header { margin-bottom: 3rem; }
+    .location-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem;
+      align-items: start;
+    }
+    .contact-block { margin-bottom: 2.5rem; }
+    .contact-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500;
+      color: var(--green-deep); margin-bottom: 0.8rem;
+    }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem; color: var(--text-muted);
+    }
+    .contact-item .icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .social-links { display: flex; gap: 1rem; margin-top: 0.8rem; }
+    .social-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--green-deep);
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(42,74,53,0.25);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .social-link:hover { background: var(--green-deep); color: var(--white); }
+    .nearby-list { list-style: none; }
+    .nearby-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      font-size: 0.87rem;
+    }
+    .nearby-item .place { font-weight: 500; color: var(--charcoal); }
+    .nearby-item .dist { color: var(--text-muted); font-size: 0.8rem; }
+    .map-wrapper {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    }
+    .map-wrapper iframe { display: block; border-radius: var(--radius); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--green-deep);
+      padding: 3rem 5%;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-logo img {
+      height: 60px; width: auto; object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+    .footer-nav {
+      display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; justify-content: center;
+    }
+    .footer-nav a {
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      transition: color var(--transition);
+    }
+    .footer-nav a:hover { color: var(--gold-light); }
+    .footer-copy {
+      font-size: 0.78rem; color: rgba(255,255,255,0.4);
+      text-align: center; line-height: 1.7;
+    }
+    .footer-credit {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.28);
+      font-style: italic; letter-spacing: 0.04em;
+    }
+    .footer-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 72px; left: 0; width: 100%; z-index: 999;
+      background: var(--white);
+      padding: 1.5rem 5%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      flex-direction: column; gap: 1.2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green-deep);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .events-inner { grid-template-columns: 1fr; }
+      .events-photos { grid-template-columns: 1fr 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .masonry { columns: 2; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .masonry { columns: 1; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .booking-form { padding: 1.5rem; }
+      footer { gap: 1rem; }
+      .footer-nav { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="lagoon logo pic 16.jpg" alt="The Lagoon Resort & Spa Logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#booking" class="btn btn-gold">Book Now</a>
+  </div>
+  <div class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#amenities" onclick="closeMobileMenu()">Amenities</a>
+  <a href="#dining"    onclick="closeMobileMenu()">Dining</a>
+  <a href="#rooms"     onclick="closeMobileMenu()">Rooms</a>
+  <a href="#events"    onclick="closeMobileMenu()">Events</a>
+  <a href="#gallery"   onclick="closeMobileMenu()">Gallery</a>
+  <a href="#booking"   onclick="closeMobileMenu()">Book Now</a>
+  <a href="#location"  onclick="closeMobileMenu()">Location</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Riverside Luxury · Kenya</p>
+    <h1 class="hero-title">Lagoon Resort<br>&amp; Spa</h1>
+    <p class="hero-subtitle">Unwind with a full-service spa and outdoor pool. Tucked away in a serene garden setting by the river, where nature meets elegance.</p>
+    <a href="#booking" class="btn btn-outline">Book Your Stay</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ===== AMENITIES ===== -->
+<section id="amenities">
+  <div class="amenities-inner">
+    <div class="amenities-header">
+      <span class="section-label">World-Class Facilities</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Everything You Need,<br><em>Nothing Left to Desire</em></h2>
+      <p style="margin-top:1rem;">From riverside gardens to exceptional dining, every detail at Lagoon Resort &amp; Spa is crafted for your comfort.</p>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <div class="amenity-icon">🍽️</div>
+        <div class="amenity-name">Bar &amp; Restaurant</div>
+        <div class="amenity-desc">On-site dining featuring local and international cuisine in an elegant setting.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🏊</div>
+        <div class="amenity-name">Pool &amp; Children's Pool</div>
+        <div class="amenity-desc">Sparkling outdoor pool and a dedicated children's pool for the whole family.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">💆</div>
+        <div class="amenity-name">Full-Service Spa</div>
+        <div class="amenity-desc">Rejuvenate with our signature treatments and skilled therapists.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🅿️</div>
+        <div class="amenity-name">Free Parking &amp; WiFi</div>
+        <div class="amenity-desc">Complimentary secure parking and high-speed WiFi throughout the resort.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🛎️</div>
+        <div class="amenity-name">Concierge &amp; Luggage</div>
+        <div class="amenity-desc">24-hour concierge services and convenient luggage storage for your ease.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🌿</div>
+        <div class="amenity-name">Riverside Garden</div>
+        <div class="amenity-desc">Lush riverside gardens with terrace seating and beautiful outdoor furniture.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🗣️</div>
+        <div class="amenity-name">English &amp; Swahili</div>
+        <div class="amenity-desc">Our warm staff are fluent in both English and Swahili for a personal experience.</div>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">♿</div>
+        <div class="amenity-name">Accessible Rooms</div>
+        <div class="amenity-desc">Smooth accessible tile flooring throughout all rooms for ease of movement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DINING ===== -->
+<section id="dining">
+  <div class="dining-inner">
+    <div class="dining-header">
+      <span class="section-label">Taste of the Lagoon</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Restaurant &amp; Bar</h2>
+      <p>A true taste of home served with excellence at Lagoon Resort &amp; Spa.</p>
+    </div>
+    <div class="dining-grid">
+
+      <!-- Card 1: Bar & Restaurant Ambiance -->
+      <div class="dining-card">
+        <div class="dining-img">
+          <img src="lagoon resort bar and resturant pic 15.jpg" alt="Lagoon Resort Bar and Restaurant" loading="lazy" />
+        </div>
+        <div class="dining-body">
+          <span class="dining-tag">🍹 Bar &amp; Lounge</span>
+          <h3 class="dining-name">The Riverside Bar &amp; Restaurant</h3>
+          <p class="dining-desc">Step into our beautifully lit terrace bar and restaurant, where warm ambiance meets the cool riverside breeze. Whether you're unwinding after a swim or entertaining guests, our fully stocked bar and eclectic menu make every visit memorable.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Local Culinary Experience -->
+      <div class="dining-card">
+        <div class="dining-img">
+          <img src="lagoon ugali nyama choma pic 20.jpg" alt="Local Kenyan Cuisine - Ugali and Nyama Choma" loading="lazy" />
+        </div>
+        <div class="dining-body">
+          <span class="dining-tag">🍖 Local Cuisine</span>
+          <h3 class="dining-name">A Celebration of Local Flavours</h3>
+          <p class="dining-desc">Savour the rich, authentic taste of Kenya with our signature Nyama Choma and Ugali — slow-roasted, perfectly seasoned, and served with love. Our chefs bring the warmth of home cooking to every plate, honouring tradition in every bite.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ROOMS ===== -->
+<section id="rooms">
+  <div class="rooms-inner">
+    <div class="rooms-header">
+      <span class="section-label">Accommodation</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Our Rooms &amp; Suites</h2>
+      <p style="margin-top:0.8rem; color:var(--text-muted); max-width:500px;">Each room is a private sanctuary designed with care, comfort, and beautiful natural surroundings in mind.</p>
+    </div>
+    <div class="rooms-grid">
+
+      <!-- Executive Room -->
+      <div class="room-card">
+        <div class="room-img">
+          <img src="lagoon Executive Room pic 3.avif" alt="Executive Room" loading="lazy" />
+          <div class="room-badge">Executive</div>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Executive Room</h3>
+          <div class="room-meta">
+            <span class="room-tag">🌿 Garden View</span>
+            <span class="room-tag">👥 Sleeps 2</span>
+            <span class="room-tag">🛏️ Queen Bed</span>
+            <span class="room-tag">📶 Free WiFi</span>
+          </div>
+          <ul class="room-features">
+            <li>1 Bedroom with elegant garden views</li>
+            <li>Dedicated desk &amp; laptop workspace</li>
+            <li>Premium Egyptian cotton bed sheets</li>
+          </ul>
+          <button class="btn btn-dark" onclick="bookRoom('Executive Room')">Book Room</button>
+        </div>
+      </div>
+
+      <!-- Standard Room -->
+      <div class="room-card">
+        <div class="room-img">
+          <img src="lagoon bed pic 2.avif" alt="Standard Room" loading="lazy" />
+          <div class="room-badge">Standard</div>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Standard Room</h3>
+          <div class="room-meta">
+            <span class="room-tag">👥 Sleeps 2</span>
+            <span class="room-tag">🛏️ Double Bed</span>
+            <span class="room-tag">📶 Free WiFi</span>
+          </div>
+          <ul class="room-features">
+            <li>1 cosy, comfortable bedroom</li>
+            <li>Dedicated desk &amp; laptop workspace</li>
+            <li>Premium Egyptian cotton bed sheets</li>
+          </ul>
+          <button class="btn btn-dark" onclick="bookRoom('Standard Room')">Book Room</button>
+        </div>
+      </div>
+
+      <!-- Deluxe Room -->
+      <div class="room-card">
+        <div class="room-img">
+          <img src="lagoon pool view plus houses cinematic pic 10.jpg" alt="Deluxe Room" loading="lazy" />
+          <div class="room-badge">Deluxe</div>
+        </div>
+        <div class="room-body">
+          <h3 class="room-name">Deluxe Room</h3>
+          <div class="room-meta">
+            <span class="room-tag">🏊 Pool View</span>
+            <span class="room-tag">👥 Sleeps 2</span>
+            <span class="room-tag">🛏️ Queen Bed</span>
+            <span class="room-tag">📶 Free WiFi</span>
+          </div>
+          <ul class="room-features">
+            <li>Stunning pool &amp; garden vistas</li>
+            <li>Direct outdoor pool access</li>
+            <li>Premium linens &amp; elegant furnishings</li>
+          </ul>
+          <button class="btn btn-dark" onclick="bookRoom('Deluxe Room')">Book Room</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVENTS ===== -->
+<section id="events">
+  <div class="events-inner">
+    <div class="events-text">
+      <span class="section-label">Weddings &amp; Gatherings</span>
+      <div class="divider"></div>
+      <h2 class="section-title light">Your Celebration,<br><em>Perfected</em></h2>
+      <p style="margin-top:1.2rem;">At Lagoon Resort &amp; Spa, we are ready to host your weddings, ruracio ceremonies, conferences, meetings, and special celebrations. Our thoughtfully designed meeting rooms perfectly balance comfort, elegance, and productivity with rich natural light and serene riverside surroundings.</p>
+      <ul class="events-highlights">
+        <li><span class="dot"></span>Weddings &amp; Ruracio Ceremonies</li>
+        <li><span class="dot"></span>Conferences &amp; Corporate Meetings</li>
+        <li><span class="dot"></span>Church Gatherings &amp; Special Celebrations</li>
+        <li><span class="dot"></span>Flexible Seating from Intimate to Grand Events</li>
+        <li><span class="dot"></span>Serene Riverside Setting &amp; Natural Light</li>
+      </ul>
+      <div style="margin-top:2rem;">
+        <a href="#booking" class="btn btn-outline" onclick="switchToEventTab()">Inquire About Grounds</a>
+      </div>
+    </div>
+    <div class="events-photos">
+      <img src="lagoon meeting room pic 13.jpg" alt="Lagoon Meeting Room" loading="lazy" />
+      <img src="lagoon meetings pic 19.jpg" alt="Lagoon Meetings in Session" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header">
+      <span class="section-label">A Glimpse of Paradise</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Gallery</h2>
+    </div>
+    <div class="masonry">
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon pool and ariel view pic 1.avif" alt="Aerial view of pool" loading="lazy" />
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon outdoor pool pic 4.avif" alt="Outdoor pool" loading="lazy" />
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon view from room pic 5.avif" alt="View from room" loading="lazy" />
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon Terrace patio room 6.avif" alt="Terrace patio room" loading="lazy" />
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon lobby pic 7.avif" alt="Resort lobby" loading="lazy" />
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon night shot beautiful pool pic 17.jpg" alt="Lagoon pool at night" loading="lazy" />
+      </div>
+      <div class="masonry-item" onclick="openLightbox(this)">
+        <img src="lagoon room tv pic 18.jpg" alt="Room with TV" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Gallery image" />
+</div>
+
+<!-- ===== BOOKING ===== -->
+<section id="booking">
+  <div class="booking-inner">
+    <div class="booking-header">
+      <span class="section-label">Reservations</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Book Your Experience</h2>
+      <p style="margin-top:0.8rem; color:var(--text-muted);">Complete the form below and we'll confirm your booking via WhatsApp.</p>
+    </div>
+
+    <div class="booking-tabs">
+      <button class="tab-btn active" onclick="switchTab('rooms-tab', this)">🛏 Book a Room</button>
+      <button class="tab-btn" onclick="switchTab('events-tab', this)">🎉 Book Grounds / Event</button>
+    </div>
+
+    <!-- Tab 1: Book a Room -->
+    <div id="rooms-tab" class="tab-panel active">
+      <div class="booking-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="checkin">Check-in Date</label>
+            <input type="date" id="checkin" name="checkin" required />
+          </div>
+          <div class="form-group">
+            <label for="checkout">Check-out Date</label>
+            <input type="date" id="checkout" name="checkout" required />
+          </div>
+          <div class="form-group">
+            <label for="adults">Adults</label>
+            <select id="adults" name="adults">
+              <option value="1">1 Adult</option>
+              <option value="2" selected>2 Adults</option>
+              <option value="3">3 Adults</option>
+              <option value="4">4 Adults</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="children">Children</label>
+            <select id="children" name="children">
+              <option value="0" selected>No Children</option>
+              <option value="1">1 Child</option>
+              <option value="2">2 Children</option>
+              <option value="3">3 Children</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="room-type">Room Type</label>
+            <select id="room-type" name="room-type">
+              <option value="">— Please Select a Room —</option>
+              <option value="Executive Room">Executive Room</option>
+              <option value="Standard Room">Standard Room</option>
+              <option value="Deluxe Room">Deluxe Room</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button class="btn-whatsapp" onclick="submitRoomBooking()">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Confirm Booking via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Book Grounds -->
+    <div id="events-tab" class="tab-panel">
+      <div class="booking-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="event-date">Event Date</label>
+            <input type="date" id="event-date" name="event-date" required />
+          </div>
+          <div class="form-group">
+            <label for="event-type">Event Type</label>
+            <select id="event-type" name="event-type">
+              <option value="">— Select Event Type —</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Conference Meeting">Conference Meeting</option>
+              <option value="Ruracio">Ruracio Ceremony</option>
+              <option value="Church Meeting">Church Meeting</option>
+              <option value="Business Meeting">Business Meeting</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="guest-count">Estimated Guest Count</label>
+            <input type="number" id="guest-count" name="guest-count" placeholder="How many people will be attending?" min="1" />
+          </div>
+          <div class="form-group full">
+            <label for="special-req">Special Requirements</label>
+            <textarea id="special-req" name="special-req" placeholder="Tell us about your specific needs, theme, décor preferences, catering requirements..."></textarea>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button class="btn-whatsapp" onclick="submitEventBooking()">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Inquire About Event Grounds via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCATION ===== -->
+<section id="location">
+  <div class="location-inner">
+    <div class="location-header">
+      <span class="section-label">Find Us</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Location &amp; Contact</h2>
+    </div>
+    <div class="location-grid">
+      <div>
+        <div class="contact-block">
+          <h3>Get in Touch</h3>
+          <div class="contact-item">
+            <span class="icon">📞</span>
+            <span><a href="tel:0726100370" style="color:var(--green-mid);">0726 100370</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="icon">✉️</span>
+            <span><a href="mailto:thelagoonresortltd@gmail.com" style="color:var(--green-mid);">thelagoonresortltd@gmail.com</a></span>
+          </div>
+        </div>
+        <div class="contact-block">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100089182050204" target="_blank" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+            <a href="https://www.instagram.com/thelagoonresortandspa/" target="_blank" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+        <div class="contact-block">
+          <h3>What's Nearby</h3>
+          <ul class="nearby-list">
+            <li class="nearby-item">
+              <span class="place">🌲 Kerugoya Urban Forest</span>
+              <span class="dist">16 min · 15.0 km</span>
+            </li>
+            <li class="nearby-item">
+              <span class="place">🏟️ Kerugoya Stadium</span>
+              <span class="dist">17 min · 15.7 km</span>
+            </li>
+            <li class="nearby-item">
+              <span class="place">⚽ Kobil Embu Stadium</span>
+              <span class="dist">22 min · 22.3 km</span>
+            </li>
+            <li class="nearby-item">
+              <span class="place">🎓 Embu College Campus</span>
+              <span class="dist">24 min · 24.1 km</span>
+            </li>
+            <li class="nearby-item">
+              <span class="place">🏔️ Mt. Kenya National Park</span>
+              <span class="dist">48 min · 27.2 km</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="map-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.9110930555835!2d37.32245937399461!3d-0.5589151994356133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1826299db492ccbf%3A0xe1f616c16a7175a5!2sThe%20Lagoon%20Resort%20%26%20Spa!5e1!3m2!1sen!2ske!4v1780420658424!5m2!1sen!2ske" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">
+    <img src="lagoon logo pic 16.jpg" alt="The Lagoon Resort & Spa" />
+  </div>
+  <ul class="footer-nav">
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#booking">Book Now</a></li>
+    <li><a href="#location">Contact</a></li>
+  </ul>
+  <p class="footer-copy">
+    © 2025 The Lagoon Resort &amp; Spa · thelagoonresortltd@gmail.com · 0726 100370
+  </p>
+  <p class="footer-credit">Designed and developed by SMG designs</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* --- Navbar scroll effect --- */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* --- Mobile menu toggle --- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+  /* --- Tab switching (booking) --- */
+  function switchTab(panelId, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(panelId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  /* --- Switch to event tab from events section CTA --- */
+  function switchToEventTab() {
+    const btns = document.querySelectorAll('.tab-btn');
+    switchTab('events-tab', btns[1]);
+  }
+
+  /* --- Book Room: scroll to booking + auto-select room --- */
+  function bookRoom(roomType) {
+    // Switch to room tab
+    const btns = document.querySelectorAll('.tab-btn');
+    switchTab('rooms-tab', btns[0]);
+    // Auto-select room in dropdown
+    const select = document.getElementById('room-type');
+    if (select) select.value = roomType;
+    // Smooth scroll to booking
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* --- WhatsApp number (international format, no +) --- */
+  const WA_NUMBER = '254726100370';
+
+  /* --- Room booking WhatsApp submission --- */
+  function submitRoomBooking() {
+    const checkin   = document.getElementById('checkin').value;
+    const checkout  = document.getElementById('checkout').value;
+    const adults    = document.getElementById('adults').value;
+    const children  = document.getElementById('children').value;
+    const roomType  = document.getElementById('room-type').value;
+
+    if (!checkin || !checkout || !roomType) {
+      alert('Please fill in all required fields: Check-in, Check-out, and Room Type.');
+      return;
+    }
+
+    const msg =
+      `Hello, I'd like to book a room at The Lagoon Resort & Spa.\n\n` +
+      `🛏️ Room Type: ${roomType}\n` +
+      `📅 Check-in: ${checkin}\n` +
+      `📅 Check-out: ${checkout}\n` +
+      `👥 Guests: ${adults} Adult(s), ${children} Child(ren)\n\n` +
+      `Please confirm availability. Thank you!`;
+
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  /* --- Event booking WhatsApp submission --- */
+  function submitEventBooking() {
+    const eventDate   = document.getElementById('event-date').value;
+    const eventType   = document.getElementById('event-type').value;
+    const guestCount  = document.getElementById('guest-count').value;
+    const specialReq  = document.getElementById('special-req').value;
+
+    if (!eventDate || !eventType) {
+      alert('Please fill in the Event Date and Event Type.');
+      return;
+    }
+
+    const msg =
+      `Hello, I'd like to inquire about booking the grounds at The Lagoon Resort & Spa.\n\n` +
+      `🎉 Event Type: ${eventType}\n` +
+      `📅 Event Date: ${eventDate}\n` +
+      `👥 Estimated Guests: ${guestCount || 'Not specified'}\n` +
+      `📝 Special Requirements: ${specialReq || 'None'}\n\n` +
+      `Please get in touch with more details. Thank you!`;
+
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  /* --- Gallery Lightbox --- */
+  function openLightbox(el) {
+    const src = el.querySelector('img').src;
+    const lb  = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* --- Set min dates for date pickers to today --- */
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+  document.getElementById('event-date').min = today;
+
+  /* --- Auto-advance checkout date when checkin changes --- */
+  document.getElementById('checkin').addEventListener('change', function() {
+    const nextDay = new Date(this.value);
+    nextDay.setDate(nextDay.getDate() + 1);
+    const checkoutEl = document.getElementById('checkout');
+    checkoutEl.min = nextDay.toISOString().split('T')[0];
+    if (!checkoutEl.value || checkoutEl.value <= this.value) {
+      checkoutEl.value = nextDay.toISOString().split('T')[0];
+    }
+  });
+</script>
+
+</body>
+</html>
